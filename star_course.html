@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="./home_style.css" type="text/css" rel="stylesheet">
+<title>Goruck Star Course</title>
+</head>
+<body>
+  <div class=navigation>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="star_course.html">Star Course</a></li>
+      <!--<li>Long's Peak</li>
+      <li>Mount of the Holy Cross</li>
+      <li>About Me</li> -->
+    </ul>
+  <p>
+    Here is a tool that I've built which will allow you to calculate how many
+    minutes it will take you to cover a certain distance while moving at a
+    specific pace.
+  </p>
+  <input type="pace" id="averagePace"=> Please enter the number of miles that you
+  can cover in one hour.</input>
+  <br></br>
+  <input type="distance" id="totalDistance"=> Please enter the total number of miles
+you wish to cover.</input>
+  <br></br>
+    <button onclick="test()">Submit</button>
+    <script>
+        function test()
+        {
+            var pace = document.getElementById("averagePace").value;
+            var distance = document.getElementById("totalDistance").value;
+            var time_minutes = (distance / pace).toFixed(1);
+            var t_min = time_minutes.toString();
+            var unit = "hours";
+
+          if (t_min < 1) { //if time is less than one hour convert to minutes
+            t_min *= 60
+            unit = "minutes"
+          }
+          if (t_min == 1){ //change label to hour if time is only 1 hour
+            unit = "hour"
+          }
+
+          var msg =  "It will take you " + t_min + " " +
+          unit + " to cover that distance.";
+          document.getElementById('output').innerHTML = msg;
+        }
+    </script>
+    <br></br>
+    <div id='output'></div>
+</body>
+</html>
